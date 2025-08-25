@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+</head>
+
+<body>
+  <!-- <script>console.log(document.title);</script>
+  <script>console.log(document.body);</script> -->
+
+  <!-- <script>
+    const 
+    orang = {};
+      orang["nama"] = "Rey",
+      orang["umur"] = 17,
+      orang["sekolah"] = "SMK NEGERI 1 SURABAYA"
+    console.log(orang);
+
+    const teman = {};
+    teman["nama"] = "Habl",
+    teman["umur"] = 17,
+    teman["sekolah"] = "SMK NEGERI 1 SURABAYA"
+    console.table(teman);
+
+    const sekolah = {};
+    sekolah["nama sekolah"] = "SMK NEGERI 1 SURABAYA ",
+    sekolah["alamat"] = "Jl. Smea No.4, Wonokromo, Kec. Wonokromo, Surabaya, Jawa Timur 60243",
+    sekolah["telepon"] = " (031) 8292038"
+    console.table(sekolah); -->
+
+  <!-- <p id="title">Ini adalah teks</p> -->
+
+  <!-- <script>
+    const rey = document.getElementsByClassName("rey");
+    console.info(rey);
+  </script>
+
+  </script> -->
+
+  <!-- <ul id="menu">
+    <li id="item-1">Ayam</li>
+    <li id="item-2">Bebek</li>
+    <li id="item-3">Kelinci</li>
+  </ul> -->
+
+  <!-- <script> -->
+  <!-- // const menu = document.getElementById("menu");
+    // menu.removeChild(document.getElementById("item-2"));
+    // console.info(menu);
+    // console.info(menu.children);
+    // const item = document.getElementById("item-1");
+    // console.info(item);
+    // console.info(item.nextSibling);
+  
+    // const title = document.getElementById("title");
+    // title.textContent = "Rey anjayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"; -->
+
+
+  <!-- </script> -->
+
+  <!-- <div id="content"></div> -->
+
+
+  <!-- <script>
+    const content = document.getElementById("content");
+
+    const title = document.createElement("h1");
+    title.textContent = "HIDUP JOKOWI!!!!";
+    title.style.textAlign = "center";
+    title.style.color = "red";
+    title.style.fontSize = "100px";
+    content.appendChild(title);
+
+    const paragraf = document.createElement("p");
+    paragraf.textContent = "JOKOWI ADALAH PRESIDEN TERBAIK DI DUNIA";
+    paragraf.style.textAlign = "center";
+    paragraf.style.fontSize = "90px";
+    paragraf.style.color = "blue";
+    paragraf.style.fontWeight = "bold";
+    content.appendChild(paragraf); -->
+  
+
+
+  <!-- </script> -->
+  <input type="button" id="clickme" value="clickme">
+  
+  <script>
+    const clickme = document.getElementById("clickme");
+    clickme.addEventListener("click", function() {
+      if (clickme.value === "clickme") {
+        clickme.setAttribute("value", "Rey ganteng");
+      } else {
+        clickme.setAttribute("value", "clickme");
+      }
+    });
+  </script>
+</body>
+
+</html>
