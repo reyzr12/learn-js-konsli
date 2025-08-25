@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
+  window.tableBody = document.querySelector('#todo-table tbody');
+  loadTasks();
   var form = document.getElementById('todo-form');
   var input = document.getElementById('todo-input');
-  var tableBody = document.querySelector('#todo-table tbody');
-
   form.onsubmit = function (e) {
     e.preventDefault();
     var task = input.value.trim();
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (confirm('Yakin mau dihapus?')) {
         tableBody.removeChild(row);
         updateRowNumbers();
+        saveTasks();
       }
     };
 
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           taskCell.textContent = currentTask;
         }
+        saveTasks();
       };
 
       editInput.onkeydown = function (event) {
@@ -67,14 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
     tableBody.appendChild(row);
 
     input.value = '';
+    saveTasks();
   };
-
-  function updateRowNumbers() {
-    var rows = tableBody.children;
-    for (var i = 0; i < rows.length; i++) {
-      rows[i].children[0].textContent = i + 1;
-    }
-  }
 });
 
 function saveTasks() {
@@ -149,13 +145,9 @@ function loadTasks() {
   });
 }
 
-
-
 function updateRowNumbers() {
   var rows = tableBody.children;
   for (var i = 0; i < rows.length; i++) {
     rows[i].children[0].textContent = i + 1;
   }
 }
-
-loadTasks();
