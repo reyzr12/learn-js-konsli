@@ -145,3 +145,60 @@ ul li button {
 #todo-table button:hover {
   background-color: #c82333;
 }
+
+@media (max-width: 600px) {
+  body {
+    padding: 8px;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  #todo-form {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 14px;
+  }
+
+  #todo-input {
+    width: 100%;
+    margin-bottom: 8px;
+    font-size: 1rem;
+  }
+
+  #add-button,
+  #todo-form button {
+    width: 100%;
+    margin-left: 0;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+
+  #todo-table {
+    width: 100%;
+    font-size: 0.95rem;
+    box-shadow: none;
+  }
+
+  #todo-table th,
+  #todo-table td {
+    padding: 8px 4px;
+    font-size: 0.95rem;
+  }
+
+  .todo-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+  }
+
+  .delete-button,
+  #todo-table button {
+    width: 100%;
+    margin: 4px 0 0 0;
+    padding: 8px 0;
+    font-size: 1rem;
+  }
+}
