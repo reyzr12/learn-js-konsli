@@ -10,12 +10,19 @@
   <h1>To Do List</h1>
   <form id="todo-form">
     <input type="text" id="todo-input" placeholder="Tambahkan Catatan Anda Disini" required>
-    <button type="submit">Add</button>
+    <button id="todo-submit "type="submit">Tambahkan</button>
   </form>
-  <ul id="todo-list">
-    <li>Sample Task 1 <button>Remove</button></li>
-    <li>Sample Task 2 <button>Remove</button></li>
-  </ul>
+  <table id="todo-table" border="1">
+    <thead>
+      <tr>
+        <th>Nomer</th>
+        <th>Catatan</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 </body>
 <script src="todolist.js" ></script>
 </html>
