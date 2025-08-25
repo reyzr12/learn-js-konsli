@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
   loadTasks();
   var form = document.getElementById('todo-form');
   var input = document.getElementById('todo-input');
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var editingRow = null;
+
   form.onsubmit = function (e) {
     e.preventDefault();
     var task = input.value.trim();
@@ -10,6 +13,17 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('your input is empty');
       return;
     }
+
+    if (editingRow) {
+      // Update existing row
+      editingRow.children[1].textContent = task;
+      editingRow = null;
+      submitBtn.textContent = 'Submit';
+      input.value = '';
+      saveTasks();
+      return;
+    }
+
     var row = document.createElement('tr');
 
     var noCell = document.createElement('td');
@@ -30,33 +44,20 @@ document.addEventListener('DOMContentLoaded', function () {
         tableBody.removeChild(row);
         updateRowNumbers();
         saveTasks();
+        // Reset edit state if deleting the row being edited
+        if (editingRow === row) {
+          editingRow = null;
+          submitBtn.textContent = 'Submit';
+          input.value = '';
+        }
       }
     };
 
     editBtn.onclick = function () {
-      var currentTask = taskCell.textContent;
-      var editInput = document.createElement('input');
-      editInput.type = 'text';
-      editInput.value = currentTask;
-      taskCell.textContent = '';
-      taskCell.appendChild(editInput);
-      editInput.focus();
-
-      editInput.onblur = function () {
-        var newTask = editInput.value.trim();
-        if (newTask !== '') {
-          taskCell.textContent = newTask;
-        } else {
-          taskCell.textContent = currentTask;
-        }
-        saveTasks();
-      };
-
-      editInput.onkeydown = function (event) {
-        if (event.key === 'Enter') {
-          editInput.blur();
-        }
-      };
+      input.value = taskCell.textContent;
+      input.focus();
+      editingRow = row;
+      submitBtn.textContent = 'Update';
     };
 
     actionCell.appendChild(editBtn);
@@ -105,33 +106,26 @@ function loadTasks() {
         tableBody.removeChild(row);
         updateRowNumbers();
         saveTasks();
+        // Reset edit state if deleting the row being edited
+        var form = document.getElementById('todo-form');
+        var submitBtn = form.querySelector('button[type="submit"]');
+        var input = document.getElementById('todo-input');
+        if (window.editingRow === row) {
+          window.editingRow = null;
+          submitBtn.textContent = 'Submit';
+          input.value = '';
+        }
       }
     };
 
     editBtn.onclick = function () {
-      var currentTask = taskCell.textContent;
-      var editInput = document.createElement('input');
-      editInput.type = 'text';
-      editInput.value = currentTask;
-      taskCell.textContent = '';
-      taskCell.appendChild(editInput);
-      editInput.focus();
-
-      editInput.onblur = function () {
-        var newTask = editInput.value.trim();
-        if (newTask !== '') {
-          taskCell.textContent = newTask;
-        } else {
-          taskCell.textContent = currentTask;
-        }
-        saveTasks();
-      };
-
-      editInput.onkeydown = function (event) {
-        if (event.key === 'Enter') {
-          editInput.blur();
-        }
-      };
+      var form = document.getElementById('todo-form');
+      var input = document.getElementById('todo-input');
+      var submitBtn = form.querySelector('button[type="submit"]');
+      input.value = taskCell.textContent;
+      input.focus();
+      window.editingRow = row;
+      submitBtn.textContent = 'Update';
     };
 
     actionCell.appendChild(editBtn);
